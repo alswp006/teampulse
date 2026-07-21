@@ -1,2 +1,5 @@
+🇺🇸 [한국어](./README.ko.md)
+
 # teampulse
-재택근무 확산으로 팀 결속력이 약해지고 있지만 기존 팀빌딩 솔루션은 시간이 오래 걸리거나 형식적인 문제를 해결하는 비동기 마이크로 팀빌딩 플랫폼
+
+An asynchronous micro team-building platform that solves the problem of weakened team cohesion due to widespread remote work, while existing team-building solutions are time-consuming or overly formal.

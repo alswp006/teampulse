@@ -3,7 +3,7 @@ import { Top, Chip, Spacing, Paragraph, Toast, AlertDialog } from '@toss/tds-mob
 import { showFullScreenAd } from '@apps-in-toss/web-framework';
 import { ScreenScaffold } from '@/components/ScreenScaffold';
 import { Card } from '@/components/Card';
-import { Amount } from '@/components/Amount';
+import { CountUp } from '@/components/CountUp';
 import { Sparkline } from '@/components/Sparkline';
 import { EmptyState, LoadingState } from '@/components/StateView';
 import { fetchWeeklyReport } from '@/lib/api/endpoints';
@@ -126,9 +126,11 @@ export default function Report() {
         <Card testId="report-card">
           <Paragraph.Text typography="st11">참여율</Paragraph.Text>
           <Spacing size={4} />
-          <Amount value={report.participationRate} unit="%" typography="t1" />
+          <CountUp value={report.participationRate} unit="%" typography="t1" />
           <Spacing size={8} />
-          <Paragraph.Text typography="t6">분위기 점수 {report.moodScore}점</Paragraph.Text>
+          <Paragraph.Text typography="st11">분위기 점수</Paragraph.Text>
+          <Spacing size={4} />
+          <CountUp value={report.moodScore} unit="점" typography="t2" />
           <Spacing size={16} />
           <Sparkline data={report.moodTrend} testId="mood-sparkline" />
           {keywords.length > 0 && (

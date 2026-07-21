@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Top, ListRow, Chip, Spacing, Paragraph } from '@toss/tds-mobile';
 import { ScreenScaffold } from '@/components/ScreenScaffold';
 import { SummaryHero } from '@/components/SummaryHero';
-import { Amount } from '@/components/Amount';
+import { CountUp } from '@/components/CountUp';
 import { EmptyState, LoadingState } from '@/components/StateView';
 import { fetchLeaderboard } from '@/lib/api/endpoints';
 import { useProfile } from '@/lib/profileContext';
@@ -67,9 +67,9 @@ export default function Leaderboard() {
     <ScreenScaffold top={<Top title={<Top.TitleParagraph>리더보드</Top.TitleParagraph>} />}>
       {!loading && (
         <SummaryHero
-          label="내 연속 참여"
-          value={<Amount value={myEntry?.streak ?? 0} unit="일" typography="t1" />}
-          caption={`팀 내 ${myRank}위`}
+          label="내 순위"
+          value={<CountUp value={myRank} unit="위" typography="t1" />}
+          caption={`연속 참여 ${myEntry?.streak ?? 0}일`}
           testId="my-rank-hero"
         />
       )}
