@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Onboarding from './pages/Onboarding';
 import Feed from './pages/Feed';
 import Leaderboard from './pages/Leaderboard';
+import Report from './pages/Report';
 import { ProfileProvider } from './lib/profileContext';
 
 // Dev-only TDS Gallery route — `import.meta.env.DEV` is statically replaced
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/report" element={<Report />} />
         {DevTdsGallery && (
           <Route
             path="/__tds-gallery"

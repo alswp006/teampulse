@@ -72,7 +72,6 @@ vi.mock("@/lib/profileContext", () => ({
 }));
 
 async function renderReport() {
-  // @ts-expect-error TDD red phase — src/pages/Report.tsx not yet implemented by the Coder
   const { default: Report } = await import("@/pages/Report");
   renderWithRouter(React.createElement(Report));
 }
