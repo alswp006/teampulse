@@ -162,49 +162,37 @@ describe("AC-5: Cache Key Helper Constants exported", () => {
   it("should export cacheKeys.mission(date) returning 'teampulse:cache:mission:YYYY-MM-DD'", async () => {
     const module = await import("@/lib/types");
     expect(module).toHaveProperty("cacheKeys");
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     expect(module.cacheKeys).toHaveProperty("mission");
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     expect(typeof module.cacheKeys.mission).toBe("function");
     // Test the format
     const testDate = "2026-01-15";
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     const key = module.cacheKeys.mission(testDate);
     expect(key).toBe("teampulse:cache:mission:2026-01-15");
   });
 
   it("should export cacheKeys.feed(missionId) returning 'teampulse:cache:feed:' + missionId", async () => {
     const module = await import("@/lib/types");
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     expect(module.cacheKeys).toHaveProperty("feed");
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     expect(typeof module.cacheKeys.feed).toBe("function");
     const testMissionId = "m123";
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     const key = module.cacheKeys.feed(testMissionId);
     expect(key).toBe("teampulse:cache:feed:m123");
   });
 
   it("should export cacheKeys.leaderboard(teamId) returning 'teampulse:cache:leaderboard:' + teamId", async () => {
     const module = await import("@/lib/types");
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     expect(module.cacheKeys).toHaveProperty("leaderboard");
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     expect(typeof module.cacheKeys.leaderboard).toBe("function");
     const testTeamId = "t456";
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     const key = module.cacheKeys.leaderboard(testTeamId);
     expect(key).toBe("teampulse:cache:leaderboard:t456");
   });
 
   it("should export cacheKeys.report(weekStart) returning 'teampulse:cache:report:' + weekStart", async () => {
     const module = await import("@/lib/types");
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     expect(module.cacheKeys).toHaveProperty("report");
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     expect(typeof module.cacheKeys.report).toBe("function");
     const testWeekStart = "2026-01-13";
-    // @ts-expect-error TDD: cacheKeys will be implemented to satisfy this test
     const key = module.cacheKeys.report(testWeekStart);
     expect(key).toBe("teampulse:cache:report:2026-01-13");
   });
@@ -212,29 +200,22 @@ describe("AC-5: Cache Key Helper Constants exported", () => {
   it("should export keys.profile = 'teampulse:profile'", async () => {
     const module = await import("@/lib/types");
     expect(module).toHaveProperty("keys");
-    // @ts-expect-error TDD: keys will be implemented to satisfy this test
     expect(module.keys).toHaveProperty("profile");
-    // @ts-expect-error TDD: keys will be implemented to satisfy this test
     expect(module.keys.profile).toBe("teampulse:profile");
   });
 
   it("should export keys.draft(missionId) returning 'teampulse:draft:' + missionId", async () => {
     const module = await import("@/lib/types");
-    // @ts-expect-error TDD: keys will be implemented to satisfy this test
     expect(module.keys).toHaveProperty("draft");
-    // @ts-expect-error TDD: keys will be implemented to satisfy this test
     expect(typeof module.keys.draft).toBe("function");
     const testMissionId = "m789";
-    // @ts-expect-error TDD: keys will be implemented to satisfy this test
     const key = module.keys.draft(testMissionId);
     expect(key).toBe("teampulse:draft:m789");
   });
 
   it("should export keys.aiNoticeAck = 'teampulse:ai_notice_ack'", async () => {
     const module = await import("@/lib/types");
-    // @ts-expect-error TDD: keys will be implemented to satisfy this test
     expect(module.keys).toHaveProperty("aiNoticeAck");
-    // @ts-expect-error TDD: keys will be implemented to satisfy this test
     expect(module.keys.aiNoticeAck).toBe("teampulse:ai_notice_ack");
   });
 });
