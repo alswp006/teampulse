@@ -160,7 +160,9 @@ export const cacheKeys = {
     utils.ts
   main.tsx
   pages/
+    Feed.tsx
     Home.tsx
+    Onboarding.tsx
     __TdsGallery.tsx
   styles/
     globals.css
@@ -194,6 +196,9 @@ export const cacheKeys = {
 ### Module Dependencies (import graph)
   lib/apiClient.ts → imports: lib/storage
   lib/storage.ts → imports: lib/types, lib/types
+  pages/Feed.tsx → imports: components/ScreenScaffold, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
+  pages/Home.tsx → imports: components/ScreenScaffold, components/SummaryHero, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
+  pages/Onboarding.tsx → imports: components/ScreenScaffold, components/BottomCTA, lib/api/endpoints, lib/profileContext
 CRITICAL: Before creating any new function, type, or component, check the list above. If something similar exists, import and use it.
 
 ## Already Implemented (do NOT duplicate or overwrite)
@@ -204,3 +209,4 @@ CRITICAL: Before creating any new function, type, or component, check the list a
 - 0005: 엔드포인트 함수 모음 (files: src/lib/api/endpoints.ts)
 - 0006: 온보딩 페이지 /onboarding (files: src/pages/Onboarding.tsx)
 - 0007: 홈/오늘의 미션 표시 + 상태 컨테이너 / (files: src/pages/Home.tsx)
+- 0010: 팀 피드 페이지 /feed (files: src/pages/Feed.tsx)

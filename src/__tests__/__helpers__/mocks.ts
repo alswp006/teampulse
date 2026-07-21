@@ -129,6 +129,17 @@ export function mockTds() {
         ),
     ),
 
+    // TextArea — multiline input, separate component from TextField (tds-essential.txt).
+    TextArea: React.forwardRef(
+      ({ label, ...props }: any, ref: any) =>
+        React.createElement(
+          "div",
+          null,
+          React.createElement("label", null, label),
+          React.createElement("textarea", { ref, ...props }),
+        ),
+    ),
+
     Top: Object.assign(
       ({ children, title }: any) =>
         React.createElement("nav", { role: "navigation" }, title, children),
