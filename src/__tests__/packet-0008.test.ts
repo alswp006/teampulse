@@ -179,13 +179,13 @@ describe("오늘의 미션 응답 폼 모듈 (입력·검증·draft·제출)", (
     it("AC-1f[P0]: 재진입 시 저장된 draft를 복원한다", async () => {
       localStorage.setItem(
         draftKey(HOBBY_MISSION.missionId),
-        JSON.stringify({ content: "이어쓰는 응답" }),
+        JSON.stringify({ content: "이어쓰는응답" }),
       );
 
       await renderForm();
 
       const textbox = screen.getByRole("textbox") as HTMLTextAreaElement;
-      expect(textbox.value).toBe("이어쓰는 응답");
+      expect(textbox.value).toBe("이어쓰는응답");
       expect(screen.getByText("6/300").textContent).toBe("6/300");
     });
   });

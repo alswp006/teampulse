@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ScreenScaffold } from '@/components/ScreenScaffold';
 import { SummaryHero } from '@/components/SummaryHero';
 import { EmptyState, LoadingState } from '@/components/StateView';
+import { ResponseForm } from '@/pages/home/ResponseForm';
 import { fetchTodayMission } from '@/lib/api/endpoints';
 import { useProfile } from '@/lib/profileContext';
 import type { Mission, MissionType, RouteState } from '@/lib/types';
@@ -33,6 +34,7 @@ export default function Home() {
 
   const [loading, setLoading] = useState(true);
   const [mission, setMission] = useState<Mission | null>(null);
+  const [justResponded, setJustResponded] = useState(false);
 
   const teamId = profile?.teamId;
 
@@ -59,7 +61,14 @@ export default function Home() {
     };
   }, [teamId]);
 
-  const responded = mission ? localStorage.getItem(respondedKey(mission.missionId)) === 'true' : false;
+  const responded =
+    justResponded || (mission ? localStorage.getItem(respondedKey(mission.missionId)) === 'true' : false);
+
+  const handleSubmitted = () => {
+    if (!mission) return;
+    localStorage.setItem(respondedKey(mission.missionId), 'true');
+    setJustResponded(true);
+  };
 
   return (
     <ScreenScaffold top={<Top title={<Top.TitleParagraph>오늘의 미션</Top.TitleParagraph>} />}>
@@ -101,7 +110,8 @@ export default function Home() {
             </>
           )}
           {/* AI 섹션 슬롯(packet 0009) — mission을 props로 전달 */}
-          {/* 응답폼 슬롯(packet 0008) — mission을 props로 전달 */}
+          <Spacing size={16} />
+          <ResponseForm mission={mission} onSubmitted={handleSubmitted} />
         </>
       )}
       <Spacing size={24} />
