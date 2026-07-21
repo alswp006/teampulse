@@ -162,8 +162,11 @@ export const cacheKeys = {
   pages/
     Feed.tsx
     Home.tsx
+    Leaderboard.tsx
     Onboarding.tsx
+    Report.tsx
     __TdsGallery.tsx
+    home/
   styles/
     globals.css
     reward-ad.css
@@ -197,8 +200,11 @@ export const cacheKeys = {
   lib/apiClient.ts → imports: lib/storage
   lib/storage.ts → imports: lib/types, lib/types
   pages/Feed.tsx → imports: components/ScreenScaffold, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
-  pages/Home.tsx → imports: components/ScreenScaffold, components/SummaryHero, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
+  pages/Home.tsx → imports: components/ScreenScaffold, components/SummaryHero, components/StateView, pages/home/ResponseForm, lib/api/endpoints, lib/profileContext, lib/types
+  pages/Leaderboard.tsx → imports: components/ScreenScaffold, components/SummaryHero, components/Amount, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
   pages/Onboarding.tsx → imports: components/ScreenScaffold, components/BottomCTA, lib/api/endpoints, lib/profileContext
+  pages/Report.tsx → imports: components/ScreenScaffold, components/Card, components/Amount, components/Sparkline, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
+  pages/home/ResponseForm.tsx → imports: lib/storage, lib/api/endpoints, lib/types
 CRITICAL: Before creating any new function, type, or component, check the list above. If something similar exists, import and use it.
 
 ## Already Implemented (do NOT duplicate or overwrite)
@@ -212,3 +218,4 @@ CRITICAL: Before creating any new function, type, or component, check the list a
 - 0010: 팀 피드 페이지 /feed (files: src/pages/Feed.tsx)
 - 0008: 오늘의 미션 응답 폼 모듈 (입력·검증·draft·제출) (files: src/pages/home/ResponseForm.tsx, src/pages/Home.tsx)
 - 0011: 리더보드 페이지 /leaderboard (files: src/pages/Leaderboard.tsx)
+- 0012: 주간 리포트 페이지 /report (보상형 광고 게이트) (files: src/pages/Report.tsx)
