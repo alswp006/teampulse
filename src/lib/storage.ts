@@ -18,60 +18,62 @@ export function removeItem(key: string): void {
   localStorage.removeItem(key);
 }
 
+function setItemSafe<T>(key: string, value: T): void {
+  try {
+    setItem(key, value);
+  } catch {
+    // quota exceeded or storage unavailable — skip write, app continues
+  }
+}
+
 // ─── Profile API ─────────────────────────────────────────────────────────────
 
 export function getProfile(): UserProfile | null {
-  // TODO: Implement
-  throw new Error("Not implemented");
+  return getItem<UserProfile>(keys.profile);
 }
 
 export function setProfile(profile: UserProfile): void {
-  // TODO: Implement (catch QuotaExceededError silently)
-  throw new Error("Not implemented");
+  setItemSafe(keys.profile, profile);
 }
 
 export function clearProfile(): void {
-  // TODO: Implement
-  throw new Error("Not implemented");
+  removeItem(keys.profile);
 }
 
 // ─── Generic Cache API ───────────────────────────────────────────────────────
 
 export function readCache<T>(key: string): T | null {
-  // TODO: Implement
-  throw new Error("Not implemented");
+  return getItem<T>(key);
 }
 
 export function writeCache<T>(key: string, value: T): void {
-  // TODO: Implement (catch QuotaExceededError silently)
-  throw new Error("Not implemented");
+  setItemSafe(key, value);
 }
 
 // ─── Draft API ───────────────────────────────────────────────────────────────
 
 export function getDraft(missionId: string): { content: string } | null {
-  // TODO: Implement
-  throw new Error("Not implemented");
+  return getItem<{ content: string }>(keys.draft(missionId));
 }
 
 export function setDraft(missionId: string, content: string): void {
-  // TODO: Implement (catch QuotaExceededError silently)
-  throw new Error("Not implemented");
+  setItemSafe(keys.draft(missionId), { content });
 }
 
 export function clearDraft(missionId: string): void {
-  // TODO: Implement
-  throw new Error("Not implemented");
+  removeItem(keys.draft(missionId));
 }
 
 // ─── AI Notice Ack Flag ──────────────────────────────────────────────────────
 
 export function getAiNoticeAck(): boolean {
-  // TODO: Implement
-  throw new Error("Not implemented");
+  return localStorage.getItem(keys.aiNoticeAck) === "true";
 }
 
 export function setAiNoticeAck(): void {
-  // TODO: Implement
-  throw new Error("Not implemented");
+  try {
+    localStorage.setItem(keys.aiNoticeAck, "true");
+  } catch {
+    // quota exceeded — skip write, app continues
+  }
 }

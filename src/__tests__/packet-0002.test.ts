@@ -115,10 +115,11 @@ describe("AC-2: QuotaExceededError Handling", () => {
   it("AC-2a: setProfile() catches QuotaExceededError and does not throw", async () => {
     const storage = await import("@/lib/storage");
 
-    // Mock localStorage.setItem to throw QuotaExceededError
-    const originalSetItem = localStorage.setItem;
+    // Mock localStorage.setItem to throw QuotaExceededError.
+    // jsdom's Storage instances silently ignore direct property reassignment
+    // (`localStorage.setItem = fn` is a no-op), so spy on the prototype instead.
     let callCount = 0;
-    localStorage.setItem = vi.fn(() => {
+    const spy = vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
       callCount++;
       const err = new Error("QuotaExceededError");
       err.name = "QuotaExceededError";
@@ -138,16 +139,15 @@ describe("AC-2: QuotaExceededError Handling", () => {
     expect(callCount).toBe(1);
 
     // Restore
-    localStorage.setItem = originalSetItem;
+    spy.mockRestore();
   });
 
   it("AC-2b: writeCache() catches QuotaExceededError and does not throw", async () => {
     const storage = await import("@/lib/storage");
 
-    // Mock localStorage.setItem to throw QuotaExceededError
-    const originalSetItem = localStorage.setItem;
+    // Mock localStorage.setItem to throw QuotaExceededError (see AC-2a note re: jsdom).
     let callCount = 0;
-    localStorage.setItem = vi.fn(() => {
+    const spy = vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
       callCount++;
       const err = new Error("QuotaExceededError");
       err.name = "QuotaExceededError";
@@ -161,16 +161,15 @@ describe("AC-2: QuotaExceededError Handling", () => {
     expect(callCount).toBe(1);
 
     // Restore
-    localStorage.setItem = originalSetItem;
+    spy.mockRestore();
   });
 
   it("AC-2c: setDraft() catches QuotaExceededError and does not throw", async () => {
     const storage = await import("@/lib/storage");
 
-    // Mock localStorage.setItem to throw QuotaExceededError
-    const originalSetItem = localStorage.setItem;
+    // Mock localStorage.setItem to throw QuotaExceededError (see AC-2a note re: jsdom).
     let callCount = 0;
-    localStorage.setItem = vi.fn(() => {
+    const spy = vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
       callCount++;
       const err = new Error("QuotaExceededError");
       err.name = "QuotaExceededError";
@@ -184,7 +183,7 @@ describe("AC-2: QuotaExceededError Handling", () => {
     expect(callCount).toBe(1);
 
     // Restore
-    localStorage.setItem = originalSetItem;
+    spy.mockRestore();
   });
 
   it("AC-2d: app continues without crashing after quota exceeded", async () => {
