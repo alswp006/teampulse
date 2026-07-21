@@ -202,3 +202,4 @@ CRITICAL: Before creating any new function, type, or component, check the list a
 - 0003: ProfileContext + AI 고지 상태 관리 (files: src/lib/profileContext.tsx)
 - 0004: fetch 래퍼 + 타임아웃 + 표준 에러 + 캐시 폴백 (files: src/lib/apiClient.ts)
 - 0005: 엔드포인트 함수 모음 (files: src/lib/api/endpoints.ts)
+- 0006: 온보딩 페이지 /onboarding (files: src/pages/Onboarding.tsx)
