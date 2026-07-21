@@ -97,6 +97,9 @@ export default function Report() {
           }}
         >
           <Paragraph.Text typography="t5">광고를 보면 이번 주 리포트를 볼 수 있어요</Paragraph.Text>
+          <Paragraph.Text typography="st13" color="tertiary" data-testid="ai-badge">
+            AI가 생성한 리포트예요
+          </Paragraph.Text>
           <button
             type="button"
             data-testid="report-view-button"

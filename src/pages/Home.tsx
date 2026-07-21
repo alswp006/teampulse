@@ -6,6 +6,7 @@ import { SummaryHero } from '@/components/SummaryHero';
 import { EmptyState, LoadingState } from '@/components/StateView';
 import { ResponseForm } from '@/pages/home/ResponseForm';
 import { AiRecommendSection } from '@/pages/home/AiRecommendSection';
+import { BannerSection } from '@/components/BannerSection';
 import { fetchTodayMission } from '@/lib/api/endpoints';
 import { useProfile } from '@/lib/profileContext';
 import type { Mission, MissionType, RouteState } from '@/lib/types';
@@ -112,6 +113,8 @@ export default function Home() {
           )}
           <Spacing size={16} />
           <AiRecommendSection />
+          <Spacing size={16} />
+          <BannerSection />
           <Spacing size={16} />
           <ResponseForm mission={mission} onSubmitted={handleSubmitted} />
         </>

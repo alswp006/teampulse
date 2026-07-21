@@ -83,7 +83,6 @@ beforeEach(() => {
 describe("배너 광고 배치 + AI 고지 전역 정합 + 최종 UX 폴리시", () => {
   describe("AC-1: 배너가 미션 카드/응답 폼과 겹치지 않음", () => {
     it("AC-1[P0]: BannerSection은 별도의 data-testid=banner-section 섹션에 AdSlot을 담아 렌더한다", async () => {
-      // @ts-expect-error TDD red phase — src/components/BannerSection.tsx does not exist yet (Coder creates it next).
       const { BannerSection } = await import("@/components/BannerSection");
       const { container } = renderWithRouter(React.createElement(BannerSection));
 
@@ -177,7 +176,6 @@ describe("배너 광고 배치 + AI 고지 전역 정합 + 최종 UX 폴리시",
     });
 
     it("AC-3: BannerSection은 인라인 style에 HEX 색상을 하드코딩하지 않는다", async () => {
-      // @ts-expect-error TDD red phase — src/components/BannerSection.tsx does not exist yet (Coder creates it next).
       const { BannerSection } = await import("@/components/BannerSection");
       const { container } = renderWithRouter(React.createElement(BannerSection));
 
