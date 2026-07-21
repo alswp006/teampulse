@@ -210,3 +210,4 @@ CRITICAL: Before creating any new function, type, or component, check the list a
 - 0006: 온보딩 페이지 /onboarding (files: src/pages/Onboarding.tsx)
 - 0007: 홈/오늘의 미션 표시 + 상태 컨테이너 / (files: src/pages/Home.tsx)
 - 0010: 팀 피드 페이지 /feed (files: src/pages/Feed.tsx)
+- 0008: 오늘의 미션 응답 폼 모듈 (입력·검증·draft·제출) (files: src/pages/home/ResponseForm.tsx, src/pages/Home.tsx)
