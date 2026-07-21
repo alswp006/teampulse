@@ -152,6 +152,7 @@ export const cacheKeys = {
     TossRewardAd.tsx
   hooks/
   lib/
+    api/
     apiClient.ts
     profileContext.tsx
     storage.ts
@@ -168,6 +169,7 @@ export const cacheKeys = {
   vite-env.d.ts
 
 ### Exports (src/lib/)
+- api/endpoints.ts: export async function joinTeam(teamCode: string, nickname: string): Promise<JoinResponse>; export async function fetchTodayMission(teamId: string): Promise<Mission | null | any>; export async function createResponse( missionId: string, content: string, anonymous: boolean, ): Promise<MissionResponse; export async function recommendMission(teamId: string): Promise<RecommendResponse>; export async function fetchFeed( teamId: string, missionId?: string, ): Promise<MissionResponse[] |; export async function reactToResponse( responseId: string, ): Promise<; export async function fetchLeaderboard( teamId: string, ): Promise<LeaderboardResponse |; export async function fetchWeeklyReport(teamId: string): Promise<WeeklyReport | null | any>
 - apiClient.ts: export type FetchOptions = RequestInit; export async function apiFetch<T = unknown>(path: string, opts: FetchOptions =; export async function withCacheFallback<T>( fetcher: () => Promise<T>, cacheKey: string, ): Promise<T |
 - storage.ts: export function getItem<T>(key: string): T | null; export function setItem<T>(key: string, value: T): void; export function removeItem(key: string): void; export function getProfile(): UserProfile | null; export function setProfile(profile: UserProfile): void; export function clearProfile(): void; export function readCache<T>(key: string): T | null; export function writeCache<T>(key: string, value: T): void
 - types.ts: export interface UserProfile; export const UserProfile =; export type MissionType = "hobby" | "praise" | "worry" | "custom"; export const MissionType =; export interface Mission; export const Mission =; export interface MissionResponse; export const MissionResponse =
@@ -199,3 +201,4 @@ CRITICAL: Before creating any new function, type, or component, check the list a
 - 0002: localStorage 헬퍼 (프로필·캐시·draft·플래그) (files: src/lib/storage.ts)
 - 0003: ProfileContext + AI 고지 상태 관리 (files: src/lib/profileContext.tsx)
 - 0004: fetch 래퍼 + 타임아웃 + 표준 에러 + 캐시 폴백 (files: src/lib/apiClient.ts)
+- 0005: 엔드포인트 함수 모음 (files: src/lib/api/endpoints.ts)
