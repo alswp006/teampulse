@@ -10,17 +10,36 @@ import { test, expect, type Page } from "@playwright/test";
  *   1) ROUTES에 핵심 화면을 추가(폼/결과/목록/설정 등)
  *   2) 데이터가 필요한 화면은 seed()에서 localStorage를 채워라
  */
-const ROUTES: { path: string; name: string }[] = [
-  { path: "/", name: "home" },
-  // { path: "/result", name: "result" },   // ← 이 앱의 라우트를 추가
-  // { path: "/settings", name: "settings" },
+/**
+ * "/", "/feed", "/leaderboard", "/report"는 RequireProfile 게이트(src/App.tsx)로
+ * 보호되어 있어 profile 없이 방문하면 전부 "/onboarding"으로 리다이렉트된다 — 실제
+ * 화면을 캡처하려면 테스트 프로필을 미리 심어야 한다. 반대로 "/onboarding"은 profile이
+ * 있으면 "/"로 리다이렉트되므로(Onboarding.tsx) 프로필을 심으면 안 된다.
+ */
+const ROUTES: { path: string; name: string; needsProfile: boolean }[] = [
+  { path: "/onboarding", name: "onboarding", needsProfile: false },
+  { path: "/", name: "home", needsProfile: true },
+  { path: "/feed", name: "feed", needsProfile: true },
+  { path: "/leaderboard", name: "leaderboard", needsProfile: true },
+  { path: "/report", name: "report", needsProfile: true },
 ];
 
-/** 데이터가 필요한 화면용 localStorage 시드(앱에 맞게 채워라). 앱 스크립트보다 먼저 실행된다. */
-async function seed(page: Page): Promise<void> {
-  await page.addInitScript(() => {
-    // window.localStorage.setItem("MY_STORAGE_KEY", JSON.stringify({ /* ... */ }));
-  });
+/** 데이터가 필요한 화면용 localStorage 시드. 앱 스크립트보다 먼저 실행된다. */
+async function seed(page: Page, needsProfile: boolean): Promise<void> {
+  await page.addInitScript((shouldSeedProfile) => {
+    if (shouldSeedProfile) {
+      window.localStorage.setItem(
+        "teampulse:profile",
+        JSON.stringify({
+          userId: "e2e-user",
+          teamId: "e2e-team",
+          teamName: "E2E 테스트팀",
+          nickname: "테스터",
+          joinedAt: Date.now(),
+        }),
+      );
+    }
+  }, needsProfile);
 }
 
 // 토스 WebView 밖(일반 브라우저)에서만 나는 알려진 dev 에러 — 무시(실기기 WebView엔 안 남)
@@ -34,7 +53,7 @@ for (const route of ROUTES) {
     });
     page.on("pageerror", (e) => errors.push(e.message));
 
-    await seed(page);
+    await seed(page, route.needsProfile);
     await page.goto(route.path);
     await page.waitForTimeout(1000); // React 렌더 + effect 정착
 
