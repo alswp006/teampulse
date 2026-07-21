@@ -152,6 +152,8 @@ export const cacheKeys = {
     TossRewardAd.tsx
   hooks/
   lib/
+    apiClient.ts
+    profileContext.tsx
     storage.ts
     types.ts
     utils.ts
@@ -166,6 +168,7 @@ export const cacheKeys = {
   vite-env.d.ts
 
 ### Exports (src/lib/)
+- apiClient.ts: export type FetchOptions = RequestInit; export async function apiFetch<T = unknown>(path: string, opts: FetchOptions =; export async function withCacheFallback<T>( fetcher: () => Promise<T>, cacheKey: string, ): Promise<T |
 - storage.ts: export function getItem<T>(key: string): T | null; export function setItem<T>(key: string, value: T): void; export function removeItem(key: string): void; export function getProfile(): UserProfile | null; export function setProfile(profile: UserProfile): void; export function clearProfile(): void; export function readCache<T>(key: string): T | null; export function writeCache<T>(key: string, value: T): void
 - types.ts: export interface UserProfile; export const UserProfile =; export type MissionType = "hobby" | "praise" | "worry" | "custom"; export const MissionType =; export interface Mission; export const Mission =; export interface MissionResponse; export const MissionResponse =
 - utils.ts: export function cn(...classes: (string | boolean | undefined | null)[]): string; export function formatNumber(n: number): string; export function formatCurrency(n: number, currency = 'KRW'): string
@@ -187,6 +190,7 @@ export const cacheKeys = {
 - TossRewardAd.tsx: TossRewardAd
 
 ### Module Dependencies (import graph)
+  lib/apiClient.ts → imports: lib/storage
   lib/storage.ts → imports: lib/types, lib/types
 CRITICAL: Before creating any new function, type, or component, check the list above. If something similar exists, import and use it.
 
@@ -194,3 +198,4 @@ CRITICAL: Before creating any new function, type, or component, check the list a
 - 0001: TypeScript 타입 + RouteState + 캐시 키 상수 (files: src/lib/types.ts)
 - 0002: localStorage 헬퍼 (프로필·캐시·draft·플래그) (files: src/lib/storage.ts)
 - 0003: ProfileContext + AI 고지 상태 관리 (files: src/lib/profileContext.tsx)
+- 0004: fetch 래퍼 + 타임아웃 + 표준 에러 + 캐시 폴백 (files: src/lib/apiClient.ts)
