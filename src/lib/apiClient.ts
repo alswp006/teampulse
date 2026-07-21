@@ -41,7 +41,12 @@ export async function apiFetch<T = unknown>(path: string, opts: FetchOptions = {
     return null as T;
   }
 
-  const body = await response.json();
+  let body: unknown;
+  try {
+    body = await response.json();
+  } catch {
+    throw new Error("서버 응답을 처리하지 못했어요. 잠시 후 다시 시도해주세요");
+  }
 
   if (body && typeof body === "object" && "error" in body) {
     throw new Error(String((body as { error: unknown }).error));

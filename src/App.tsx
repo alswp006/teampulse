@@ -8,6 +8,7 @@ import Leaderboard from './pages/Leaderboard';
 import Report from './pages/Report';
 import { ProfileProvider, useProfile } from './lib/profileContext';
 import { FloatingTabBar } from './components/FloatingTabBar';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { checkTossSession } from './lib/sessionCheck';
 
 // Dev-only TDS Gallery route — `import.meta.env.DEV` is statically replaced
@@ -41,23 +42,26 @@ function AppRoutes() {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<RequireProfile><Home /></RequireProfile>} />
-        <Route path="/onboarding" element={<Onboarding />} />
-        <Route path="/feed" element={<RequireProfile><Feed /></RequireProfile>} />
-        <Route path="/leaderboard" element={<RequireProfile><Leaderboard /></RequireProfile>} />
-        <Route path="/report" element={<RequireProfile><Report /></RequireProfile>} />
-        {DevTdsGallery && (
-          <Route
-            path="/__tds-gallery"
-            element={
-              <Suspense fallback={null}>
-                <DevTdsGallery />
-              </Suspense>
-            }
-          />
-        )}
-      </Routes>
+      <ErrorBoundary key={location.pathname}>
+        <Routes>
+          <Route path="/" element={<RequireProfile><Home /></RequireProfile>} />
+          <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/feed" element={<RequireProfile><Feed /></RequireProfile>} />
+          <Route path="/leaderboard" element={<RequireProfile><Leaderboard /></RequireProfile>} />
+          <Route path="/report" element={<RequireProfile><Report /></RequireProfile>} />
+          {DevTdsGallery && (
+            <Route
+              path="/__tds-gallery"
+              element={
+                <Suspense fallback={null}>
+                  <DevTdsGallery />
+                </Suspense>
+              }
+            />
+          )}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </ErrorBoundary>
       {location.pathname !== '/onboarding' && <FloatingTabBar items={TAB_ITEMS} />}
     </>
   );
