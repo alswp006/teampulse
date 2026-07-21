@@ -169,6 +169,7 @@ export const cacheKeys = {
     Report.tsx
     __TdsGallery.tsx
     home/
+  routes/
   styles/
     globals.css
     reward-ad.css
