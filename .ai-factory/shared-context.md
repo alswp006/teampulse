@@ -205,9 +205,9 @@ export const cacheKeys = {
   lib/storage.ts → imports: lib/types, lib/types
   pages/Feed.tsx → imports: components/ScreenScaffold, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
   pages/Home.tsx → imports: components/ScreenScaffold, components/SummaryHero, components/StateView, pages/home/ResponseForm, pages/home/AiRecommendSection, components/BannerSection, lib/api/endpoints, lib/profileContext, lib/types
-  pages/Leaderboard.tsx → imports: components/ScreenScaffold, components/SummaryHero, components/Amount, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
+  pages/Leaderboard.tsx → imports: components/ScreenScaffold, components/SummaryHero, components/CountUp, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
   pages/Onboarding.tsx → imports: components/ScreenScaffold, components/BottomCTA, lib/api/endpoints, lib/profileContext
-  pages/Report.tsx → imports: components/ScreenScaffold, components/Card, components/Amount, components/Sparkline, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
+  pages/Report.tsx → imports: components/ScreenScaffold, components/Card, components/CountUp, components/Sparkline, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
   pages/home/AiRecommendSection.tsx → imports: components/Card, lib/api/endpoints, lib/profileContext, lib/types
   pages/home/ResponseForm.tsx → imports: lib/storage, lib/api/endpoints, lib/types
 CRITICAL: Before creating any new function, type, or component, check the list above. If something similar exists, import and use it.
@@ -220,10 +220,10 @@ CRITICAL: Before creating any new function, type, or component, check the list a
 - 0005: 엔드포인트 함수 모음 (files: src/lib/api/endpoints.ts)
 - 0006: 온보딩 페이지 /onboarding (files: src/pages/Onboarding.tsx)
 - 0007: 홈/오늘의 미션 표시 + 상태 컨테이너 / (files: src/pages/Home.tsx)
-- 0010: 팀 피드 페이지 /feed (files: src/pages/Feed.tsx)
 - 0008: 오늘의 미션 응답 폼 모듈 (입력·검증·draft·제출) (files: src/pages/home/ResponseForm.tsx, src/pages/Home.tsx)
+- 0009: AI 미션 추천 & 분위기 섹션 (홈 내 모듈) (files: src/pages/home/AiRecommendSection.tsx, src/pages/Home.tsx)
+- 0010: 팀 피드 페이지 /feed (files: src/pages/Feed.tsx)
 - 0011: 리더보드 페이지 /leaderboard (files: src/pages/Leaderboard.tsx)
 - 0012: 주간 리포트 페이지 /report (보상형 광고 게이트) (files: src/pages/Report.tsx)
-- 0009: AI 미션 추천 & 분위기 섹션 (홈 내 모듈) (files: src/pages/home/AiRecommendSection.tsx, src/pages/Home.tsx)
 - 0013: 라우터 배선 + 온보딩 가드 + FloatingTabBar + Toss 세션 확인 (files: src/App.tsx, src/lib/sessionCheck.ts)
 - 0014: 배너 광고 배치 + AI 고지 전역 정합 + 최종 UX 폴리시 (files: src/App.tsx, src/components/BannerSection.tsx)
