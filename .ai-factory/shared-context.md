@@ -193,3 +193,4 @@ CRITICAL: Before creating any new function, type, or component, check the list a
 ## Already Implemented (do NOT duplicate or overwrite)
 - 0001: TypeScript 타입 + RouteState + 캐시 키 상수 (files: src/lib/types.ts)
 - 0002: localStorage 헬퍼 (프로필·캐시·draft·플래그) (files: src/lib/storage.ts)
+- 0003: ProfileContext + AI 고지 상태 관리 (files: src/lib/profileContext.tsx)
