@@ -5,6 +5,7 @@ import { ScreenScaffold } from '@/components/ScreenScaffold';
 import { SummaryHero } from '@/components/SummaryHero';
 import { EmptyState, LoadingState } from '@/components/StateView';
 import { ResponseForm } from '@/pages/home/ResponseForm';
+import { AiRecommendSection } from '@/pages/home/AiRecommendSection';
 import { fetchTodayMission } from '@/lib/api/endpoints';
 import { useProfile } from '@/lib/profileContext';
 import type { Mission, MissionType, RouteState } from '@/lib/types';
@@ -109,7 +110,8 @@ export default function Home() {
               <Paragraph.Text typography="st13">익명으로 등록돼요</Paragraph.Text>
             </>
           )}
-          {/* AI 섹션 슬롯(packet 0009) — mission을 props로 전달 */}
+          <Spacing size={16} />
+          <AiRecommendSection />
           <Spacing size={16} />
           <ResponseForm mission={mission} onSubmitted={handleSubmitted} />
         </>

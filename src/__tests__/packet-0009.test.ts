@@ -95,7 +95,6 @@ vi.mock("@/lib/profileContext", () => ({
 }));
 
 async function renderSection() {
-  // @ts-expect-error TDD red phase — src/pages/home/AiRecommendSection.tsx does not exist yet (Coder creates it next).
   const { AiRecommendSection } = await import("@/pages/home/AiRecommendSection");
   renderWithRouter(React.createElement(AiRecommendSection));
 }
