@@ -155,6 +155,7 @@ export const cacheKeys = {
     api/
     apiClient.ts
     profileContext.tsx
+    sessionCheck.ts
     storage.ts
     types.ts
     utils.ts
@@ -176,6 +177,7 @@ export const cacheKeys = {
 ### Exports (src/lib/)
 - api/endpoints.ts: export async function joinTeam(teamCode: string, nickname: string): Promise<JoinResponse>; export async function fetchTodayMission(teamId: string): Promise<Mission | null | any>; export async function createResponse( missionId: string, content: string, anonymous: boolean, ): Promise<MissionResponse; export async function recommendMission(teamId: string): Promise<RecommendResponse>; export async function fetchFeed( teamId: string, missionId?: string, ): Promise<MissionResponse[] |; export async function reactToResponse( responseId: string, ): Promise<; export async function fetchLeaderboard( teamId: string, ): Promise<LeaderboardResponse |; export async function fetchWeeklyReport(teamId: string): Promise<WeeklyReport | null | any>
 - apiClient.ts: export type FetchOptions = RequestInit; export async function apiFetch<T = unknown>(path: string, opts: FetchOptions =; export async function withCacheFallback<T>( fetcher: () => Promise<T>, cacheKey: string, ): Promise<T |
+- sessionCheck.ts: export async function checkTossSession(): Promise<boolean>
 - storage.ts: export function getItem<T>(key: string): T | null; export function setItem<T>(key: string, value: T): void; export function removeItem(key: string): void; export function getProfile(): UserProfile | null; export function setProfile(profile: UserProfile): void; export function clearProfile(): void; export function readCache<T>(key: string): T | null; export function writeCache<T>(key: string, value: T): void
 - types.ts: export interface UserProfile; export const UserProfile =; export type MissionType = "hobby" | "praise" | "worry" | "custom"; export const MissionType =; export interface Mission; export const Mission =; export interface MissionResponse; export const MissionResponse =
 - utils.ts: export function cn(...classes: (string | boolean | undefined | null)[]): string; export function formatNumber(n: number): string; export function formatCurrency(n: number, currency = 'KRW'): string
@@ -200,10 +202,11 @@ export const cacheKeys = {
   lib/apiClient.ts → imports: lib/storage
   lib/storage.ts → imports: lib/types, lib/types
   pages/Feed.tsx → imports: components/ScreenScaffold, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
-  pages/Home.tsx → imports: components/ScreenScaffold, components/SummaryHero, components/StateView, pages/home/ResponseForm, lib/api/endpoints, lib/profileContext, lib/types
+  pages/Home.tsx → imports: components/ScreenScaffold, components/SummaryHero, components/StateView, pages/home/ResponseForm, pages/home/AiRecommendSection, lib/api/endpoints, lib/profileContext, lib/types
   pages/Leaderboard.tsx → imports: components/ScreenScaffold, components/SummaryHero, components/Amount, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
   pages/Onboarding.tsx → imports: components/ScreenScaffold, components/BottomCTA, lib/api/endpoints, lib/profileContext
   pages/Report.tsx → imports: components/ScreenScaffold, components/Card, components/Amount, components/Sparkline, components/StateView, lib/api/endpoints, lib/profileContext, lib/types
+  pages/home/AiRecommendSection.tsx → imports: components/Card, lib/api/endpoints, lib/profileContext, lib/types
   pages/home/ResponseForm.tsx → imports: lib/storage, lib/api/endpoints, lib/types
 CRITICAL: Before creating any new function, type, or component, check the list above. If something similar exists, import and use it.
 
@@ -220,3 +223,4 @@ CRITICAL: Before creating any new function, type, or component, check the list a
 - 0011: 리더보드 페이지 /leaderboard (files: src/pages/Leaderboard.tsx)
 - 0012: 주간 리포트 페이지 /report (보상형 광고 게이트) (files: src/pages/Report.tsx)
 - 0009: AI 미션 추천 & 분위기 섹션 (홈 내 모듈) (files: src/pages/home/AiRecommendSection.tsx, src/pages/Home.tsx)
+- 0013: 라우터 배선 + 온보딩 가드 + FloatingTabBar + Toss 세션 확인 (files: src/App.tsx, src/lib/sessionCheck.ts)
