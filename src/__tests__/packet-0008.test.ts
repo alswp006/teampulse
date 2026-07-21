@@ -244,6 +244,26 @@ describe("오늘의 미션 응답 폼 모듈 (입력·검증·draft·제출)", (
         expect(document.activeElement).not.toBe(textbox);
       });
     });
+
+    it("AC-2d[P0]: 제출 실패 시 에러를 삼키지 않고 재시도 안내 토스트를 띄우며 draft를 보존한다", async () => {
+      const { createResponse } = await import("@/lib/api/endpoints");
+      (createResponse as ReturnType<typeof vi.fn>).mockRejectedValueOnce(new Error("network"));
+
+      const { onSubmitted } = await renderForm(HOBBY_MISSION);
+      fireEvent.change(screen.getByRole("textbox"), { target: { value: "등산 다녀왔어요" } });
+      fireEvent.click(submitButton());
+
+      await waitFor(() => {
+        expect(screen.getByText("잠시 후 다시 시도해주세요").textContent).toBe(
+          "잠시 후 다시 시도해주세요",
+        );
+      });
+      expect(onSubmitted).not.toHaveBeenCalled();
+      expect(localStorage.getItem(draftKey(HOBBY_MISSION.missionId))).not.toBeNull();
+      await waitFor(() => {
+        expect(submitButton().disabled).toBe(false);
+      });
+    });
   });
 
   describe("AC-3[P0]: 입력·버튼 ≥44px, console.error 0개", () => {

@@ -154,3 +154,11 @@ import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 - src/lib/types.ts — 모든 도메인 타입 정의
 - ALWAYS: import type { ... } from "@/lib/types"
 - NEVER: 같은 타입을 다른 파일에서 재정의
+
+
+## Memory Index (자동 학습 — 힌트로만 사용, 실제 코드 확인 필수)
+
+Available topics: general(1)
+
+Key lessons (verify against actual code before applying):
+- [general] 라우팅·전역 Provider·앱 진입점 배선은 단일 패킷에서만 정의하고, 후속 패킷은 재선언 대신 기존 배선을 참조·재사용하게 하라. (60%)
