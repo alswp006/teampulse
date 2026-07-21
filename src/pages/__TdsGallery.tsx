@@ -52,9 +52,9 @@ export default function TdsGallery() {
       </Section>
 
       <Section title="TextField (variants)">
-        <TextField variant="box" label="Box" value={text} onChange={(e) => setText(e.target.value)} />
-        <TextField variant="line" label="Line" value={text} onChange={(e) => setText(e.target.value)} />
-        <TextField variant="big" label="Big" value={text} onChange={(e) => setText(e.target.value)} />
+        <TextField variant="box" label="Box" placeholder="Box variant" value={text} onChange={(e) => setText(e.target.value)} />
+        <TextField variant="line" label="Line" placeholder="Line variant" value={text} onChange={(e) => setText(e.target.value)} />
+        <TextField variant="big" label="Big" placeholder="Big variant" value={text} onChange={(e) => setText(e.target.value)} />
       </Section>
 
       <Section title="Switch / Checkbox">
