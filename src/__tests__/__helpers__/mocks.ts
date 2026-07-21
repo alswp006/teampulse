@@ -27,8 +27,15 @@ export function mockTds() {
       React.createElement("button", { onClick, ...props }, children),
 
     ListRow: Object.assign(
-      ({ children, onClick, ...props }: any) =>
-        React.createElement("div", { onClick, role: "listitem", ...props }, children),
+      ({ children, onClick, contents, left, right, border, ...props }: any) =>
+        React.createElement(
+          "div",
+          { onClick, role: "listitem", ...props },
+          left,
+          contents,
+          right,
+          children,
+        ),
       {
         Text: ({ children }: any) => React.createElement("span", null, children),
         Texts: ({ top, bottom, type }: any) =>
@@ -124,12 +131,7 @@ export function mockTds() {
 
     Top: Object.assign(
       ({ children, title }: any) =>
-        React.createElement(
-          "nav",
-          { role: "navigation" },
-          title && React.createElement("h1", null, title),
-          children,
-        ),
+        React.createElement("nav", { role: "navigation" }, title, children),
       {
         TitleParagraph: ({ children }: any) => React.createElement("h1", null, children),
       },
@@ -316,7 +318,6 @@ export function mockRouter() {
     return {
       ...actual,
       useNavigate: () => mockNavigate,
-      useLocation: () => mockLocation,
     };
   });
 }
