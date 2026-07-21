@@ -219,3 +219,4 @@ CRITICAL: Before creating any new function, type, or component, check the list a
 - 0008: 오늘의 미션 응답 폼 모듈 (입력·검증·draft·제출) (files: src/pages/home/ResponseForm.tsx, src/pages/Home.tsx)
 - 0011: 리더보드 페이지 /leaderboard (files: src/pages/Leaderboard.tsx)
 - 0012: 주간 리포트 페이지 /report (보상형 광고 게이트) (files: src/pages/Report.tsx)
+- 0009: AI 미션 추천 & 분위기 섹션 (홈 내 모듈) (files: src/pages/home/AiRecommendSection.tsx, src/pages/Home.tsx)
